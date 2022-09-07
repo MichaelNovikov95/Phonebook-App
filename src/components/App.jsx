@@ -12,7 +12,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (location.pathname === '/goit-react-hw-08-phonebook') {
+    if (location.pathname === '/goit-react-hw-08-phonebook/') {
       navigate('/contacts');
     }
   }, [navigate, location.pathname]);

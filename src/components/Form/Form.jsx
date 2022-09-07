@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
 import s from './Form.module.css';
 
-const id = nanoid();
+import { Form, FloatingLabel, Button } from 'react-bootstrap';
 
-export default function Form({ onSubmit }) {
+export default function FormLogic({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -31,7 +30,7 @@ export default function Form({ onSubmit }) {
 
     const newItem = {
       name: name,
-      phone: number,
+      number: number,
     };
 
     onSubmit(newItem);
@@ -44,29 +43,23 @@ export default function Form({ onSubmit }) {
   };
 
   return (
-    <div>
-      <form onSubmit={onHandleSubmit} className={s.container}>
-        <label htmlFor={id} className={s.title}>
-          Name
-        </label>
-        <input
-          className={s.new_input}
-          id={id}
+    <Form className={s.form} onSubmit={onHandleSubmit}>
+      <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="FirstName"
           value={name}
           onChange={handleChange}
-          type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <label htmlFor={id} className={s.title}>
-          Phone
-        </label>
-        <input
-          className={s.new_input}
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingPassword" label="Telephone">
+        <Form.Control
           type="tel"
-          id={id}
+          placeholder="Telephone"
           value={number}
           onChange={handleChange}
           name="number"
@@ -74,14 +67,14 @@ export default function Form({ onSubmit }) {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-        <button type="submit" className={s.button}>
-          Add contact
-        </button>
-      </form>
-    </div>
+      </FloatingLabel>
+      <Button className={s.btn} type="submit" variant="success">
+        Add contact
+      </Button>
+    </Form>
   );
 }
 
-Form.propTypes = {
+FormLogic.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };

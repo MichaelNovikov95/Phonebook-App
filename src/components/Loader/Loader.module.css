@@ -1,5 +1,7 @@
 .container {
   position: fixed;
   display: flex;
-  left: 50%;
+  left: 45%;
+  top: 45%;
+  z-index: 999;
 }

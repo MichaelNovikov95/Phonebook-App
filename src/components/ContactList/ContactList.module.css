@@ -6,6 +6,8 @@
 
 .list_item {
   margin-top: 16px;
+  display: flex;
+  align-items: center;
 }
 
 .list_button {
@@ -13,7 +15,7 @@
   border-radius: 20px;
   border: none;
   padding: 5px 10px;
-  margin-left: 20px;
+  margin-left: auto;
   transition: all 250ms linear;
 }
 

@@ -12,8 +12,7 @@ export const fetchContacts = createAsyncThunk(
 export const deleteContacts = createAsyncThunk(
   'contacts/deleteContacts',
   async contactId => {
-    const contacts = await Api.deleteContacts(contactId);
-    return contacts;
+    await Api.deleteContacts(contactId);
   }
 );
 

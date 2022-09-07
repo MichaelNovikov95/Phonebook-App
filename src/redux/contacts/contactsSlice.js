@@ -50,7 +50,7 @@ const contactsSlice = createSlice({
 
     [deleteContacts.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.items = state.items.filter(item => item.id !== action.payload.id);
+      state.items = state.items.filter(item => item.id !== action.meta.arg);
     },
 
     [deleteContacts.rejected]: (state, _) => {

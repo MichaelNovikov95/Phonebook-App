@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  margin-right: 25px;
+}
+
+.link {
+  text-decoration: none;
+}

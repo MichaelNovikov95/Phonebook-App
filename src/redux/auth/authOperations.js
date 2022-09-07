@@ -53,8 +53,9 @@ export const currentUser = createAsyncThunk(
     }
 
     token.set(prevSessionToken);
+
     try {
-      const { data } = await axios.get('/users/current/');
+      const { data } = await axios.get('/users/current');
       return data;
     } catch ({ message }) {
       console.log(message);

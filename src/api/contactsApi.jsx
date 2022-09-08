@@ -5,7 +5,6 @@ const BASE_URL = 'https://connections-api.herokuapp.com';
 export const Api = {
   fetchContacts: async () => {
     const { data } = await axios.get(`${BASE_URL}/contacts`);
-
     return data;
   },
 

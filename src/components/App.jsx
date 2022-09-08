@@ -12,8 +12,6 @@ export default function App() {
     <div>
       <Navigation />
       <Routes>
-        <Route path="/" element={<LoginView />} />
-
         <Route element={<PrivateRoute />}>
           <Route path="contacts" element={<ContactView />} />
         </Route>

@@ -17,16 +17,17 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     [login.fulfilled]: (state, { payload }) => {
-      state.token = null;
       state.user = payload.user;
       state.token = payload.token;
       state.isLoggedIn = true;
     },
+
     [logout.fulfilled]: (state, _) => {
       state.isLoggedIn = false;
       state.user = { name: null, email: null };
       state.token = null;
     },
+
     [currentUser.fulfilled]: (state, { payload }) => {
       state.user = payload;
       state.isLoggedIn = true;

@@ -2,26 +2,22 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import * as contactsOperations from '../redux/contacts/contactsOperations';
 import { changeFilter } from '../redux/contacts/contactsSlice';
+import { currentUser } from 'redux/auth/authOperations';
 
 import { FormLogic, Filter, ContactList, Loader } from '../components/index';
 
 import { Container, Row, Col } from 'react-bootstrap';
-import authSelectors from 'redux/auth/authSelectors';
 
 export default function MyContacts() {
   const contacts = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.contacts.filter);
   const isLoading = useSelector(state => state.contacts.isLoading);
-  const getToken = useSelector(authSelectors.getToken);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (getToken !== null) {
-      dispatch(contactsOperations.fetchContacts());
-    } else {
-      return;
-    }
-  }, [dispatch, getToken]);
+    dispatch(currentUser());
+    dispatch(contactsOperations.fetchContacts());
+  }, [dispatch]);
 
   const onFormProps = data => {
     const newItem = {
